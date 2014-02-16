@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="icon" type="image/png" href="" />
+        <link rel="stylesheet" type="text/css" href="jquery.mobile-1.0.1.css" />
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mobile-1.0.1.min.js"></script>
+        <title>Infotavle - Beta!</title>
+    </head>
+    <body>
+        <div id="stationList" data-role="page">
+            <div data-role="header">
+                <h2>Infotavle - <span style="color:red">BETA</span></h2>
+            </div>
+            <div data-role="content" id="stationListContainer">
+                <ul data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Søg station">
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div id="trains" data-role="page">
+            <div data-role="header">
+                <a href="#stationList" data-icon="back" data-iconpos="notext" data-direction="reverse" data-corners="true" data-shadow="true" data-iconshadow="true" data-inline="false" data-wrapperels="span" title="Home"></a>
+                <h2></h2>
+            </div>
+            <div data-role="content" id="mainContent">
+                <ul data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Søg tog">
+                    
+                </ul>
+            </div>
+        </div>
+        
+         <div id="trainInfo" data-role="page">
+            <div data-role="header">
+               <a href="#trains" data-icon="back" data-iconpos="notext" data-direction="reverse" data-corners="true" data-shadow="true" data-iconshadow="true" data-inline="false" data-wrapperels="span" title="Home"></a>
+               <h2></h2>
+            </div>
+            <div data-role="content" id="infoList">
+                <ul data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Søg stop">
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="app/main.js"></script>
+        <script type="text/javascript">
+            
+            $(document).ready(function() {
+                if(window.location.hash) {
+                    window.location.href = "";
+                };
+            });
+            
+            $(document).delegate("#stationList",'pagebeforecreate',function(e, data) {
+                main.run();
+            });
+            
+            $(document).bind('pagechange', function() {
+                main.update();
+            })
+        </script>
+    </body>
+</html>
